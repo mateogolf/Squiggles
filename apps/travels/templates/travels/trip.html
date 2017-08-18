@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    {% load static %}
+    <!-- The line above tells Django to be ready to listen for static files -->
+    <link rel="stylesheet" href="{% static 'travels/css/main.css' %}" media="screen" title="no title" charset="utf-8">
+</head>
+<body>
+    <header>
+        <div class="user">
+            <h3>Welcome {{name}}</h3>
+            <a href="/travels">Home</a>
+            <a href="/main">Logout</a>
+        </div>
+    </header>
+    <h3>{{destination}}</h3>
+    <ul class="info">
+        <li>Planned By: {{planner.name}}</li>
+        <li>Description: {{desc}}</li>
+        <li>Travel Date From: {{start_date}}</li>
+        <li>Travel Date To: {{end_date}}</li>
+    </ul>
+    <br>
+    <h3>Other user's joining the trip:</h3>
+    <ul class="info">
+    {%for user in request.session.users%}
+        <li>{{user}}</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,14 @@
+ul>li{
+    color:red;
+    list-style: none;
+}
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+ul.info>li{
+    color:black;
+    list-style: none;
+    /* margin-left: 20px; */
+}

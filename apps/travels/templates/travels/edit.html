@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    {% load static %}
+    <!-- The line above tells Django to be ready to listen for static files -->
+    <link rel="stylesheet" href="{% static 'travels/css/main.css' %}" media="screen" title="no title" charset="utf-8">
+</head>
+<body>
+    <header>
+        <div class="user">
+            <a href="/travels">Home</a>
+            <a href="/main">Logout</a>
+        </div>
+    </header>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <form action="/travels/create" method="POST">
+        {% csrf_token %}
+        <h2>Add a Trip</h2>
+        <table>
+            <tr>
+                <!-- Destination -->
+                <td><label for="destination">Destination:</label></td>
+                <td></td>
+                <td><input type="text" id="destination" name="destination" value="{{destination}}"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <!-- Description -->
+                <td><label for="desc">Description:</label></td>
+                <td></td>
+                <td><input type="text" id="desc" name="desc" value="{{desc}}"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <!-- Start Date -->
+                <td><label for="start_date">Travel Date From: </label></td>
+                <td></td>
+                <td><input type="date" id="start_date" name="start_date" value="value=" {{start_date|date: 'Y-m-d'></td>
+                <td></td>
+            </tr>
+            <tr>
+                <!-- End Date -->
+                <td><label for="end_date">Travel Date To: </label></td>
+                <td></td>
+                <td><input type="date" id="end_date" name="end_date" value="value=" {{end_date|date: 'Y-m-d'></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><input type="submit" value="Add"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
