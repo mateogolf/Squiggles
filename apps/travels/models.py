@@ -32,7 +32,7 @@ class TripManager(models.Manager):
         
         try:#End Date try/except
             end_date = datetime.strptime(postData['end_date'], '%Y-%m-%d')
-            if end_date < datetime.today(): #OOPS
+            if end_date < datetime.today():
                 flag = True
                 errors["end_date"] = "Travel Date To: must be in the future"
         except ValueError:
